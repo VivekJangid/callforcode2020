@@ -14,18 +14,25 @@ class Stats extends Component{
       }
     
       componentDidMount() {
-        axios.get('https://api.covidindiatracker.com/total.json')
-        .then(response => {
-          this.setState({
-            newdeath : response.data.cChanges,
-            deathcases : response.data.confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-            newconfirmed : response.data.cChanges,
-            confirmedcases : response.data.confirmed.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-            newactive : response.data.aChanges,
-            activecases : response.data.active.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
-            newrecovered : response.data.rChanges,
-            recoveredcases : response.data.recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")})
-        })
+        axios.get('https://api.thevirustracker.com/free-api?countryTotal=IN')
+        .then(response => 
+          {
+            let resp = response.data.countrydata[0];
+            this.setState({
+              
+              newdeath : resp.total_new_deaths_today,
+              deathcases : resp.total_deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+              
+              newconfirmed : resp.total_new_cases_today,
+              confirmedcases : resp.total_cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+              
+              newactive : resp.total_active_cases,
+              activecases : resp.total_serious_cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+              
+              newrecovered : resp.total_active_cases,
+              recoveredcases : resp.total_recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")})
+          }
+        )
         .catch(error => {
           console.log(error);
         });
