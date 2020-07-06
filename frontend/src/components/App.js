@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Stats from "./Stats";
+
 
 class App extends Component {
   render() {
     return (
-      <h1>Hello React</h1>
+      <div>
+        <h1>Hello Reacts</h1>    
+        
+        <Stats/>
+      </div>
+      
     );
   }
+  
 }
 
 export default App;
