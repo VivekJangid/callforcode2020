@@ -1,73 +1,169 @@
-import React, { Component } from 'react';
-import axios from  'axios';
+import React, { Component } from "react";
+import axios from "axios";
+const heading = {
+  textAlign: "center",
+  margin: "0.5rem 0",
+  padding: "1.5rem 1rem",
+  background: "black",
+  fontFamily: "inherit",
+  borderRadius: 50,
+  color: "white",
+};
+const deathsdark = {
+  color: "grey",
+  fontWeight: 700,
+  fontSize: "1.3em",
+  margin: "0px 10px 0px 0px",
+};
 
-class StatsWorld extends Component{
-    state = {
-        worlddeathcases : null,
-        worldactivecases : null,
-        worldrecoveredcases : null,
-        worldconfirmedcases : null,
-    }
-    
-    componentDidMount(){
-        axios.get('https://api.thevirustracker.com/free-api?global=stats')
-        .then(response => 
-          {
-            let wresp = response.data.results[0];
-            this.setState({
-              worldactivecases: wresp.total_serious_cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") ,
-              worldconfirmedcases: wresp.total_cases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") ,
-              worlddeathcases: wresp.total_deaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") ,
-              worldrecoveredcases: wresp.total_recovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")})
-          }
-        )
-        .catch(error => {
-          console.log(error);
+const confirmed = {
+  color: "red",
+  fontWeight: 700,
+  fontSize: "1.3em",
+  margin: "0px 10px 0px 0px",
+};
+const deaths = {
+  color: "black",
+  fontWeight: 700,
+  fontSize: "1.3em",
+};
+const recovered = {
+  color: "green",
+  fontWeight: 700,
+  fontSize: "1.3em",
+};
+const title = {
+  margin: "0px 0px 19.2px",
+  color: "inherit",
+  fontSize: "1.5rem",
+  lineHeight: "1.5",
+  fontFamily: "inherit",
+  letterSpacing: "0.1rem",
+};
+const covidcol = {
+  display: "inline-block",
+  borderRight: "1px solid #6a6a6a",
+
+  paddingRight: "0.8rem",
+  paddingLeft: "0.8rem",
+  fontSize: "15px",
+  lineHeight: "1.5",
+  float: "none",
+};
+
+const covidRecovered = {
+  borderRight: 0,
+  paddingRight: 0,
+};
+const covidtitle = {
+  fontSize: "0.8em",
+};
+const covidnum = {
+  fontWeight: 700,
+  fontSize: "1.3em",
+};
+class StatsWorld extends Component {
+  state = {
+    worlddeathcases: null,
+    worldactivecases: null,
+    worldrecoveredcases: null,
+    worldconfirmedcases: null,
+  };
+
+  componentDidMount() {
+    axios
+      .get("https://api.thevirustracker.com/free-api?global=stats")
+      .then((response) => {
+        let wresp = response.data.results[0];
+        this.setState({
+          worldactivecases: wresp.total_serious_cases
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+          worldconfirmedcases: wresp.total_cases
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+          worlddeathcases: wresp.total_deaths
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
+          worldrecoveredcases: wresp.total_recovered
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ","),
         });
-    }
-        
-    
-    render(){
-        return(
-                  <div className="container">
-                    <div className="container text-center">
-                      <h3 style={{textDecoration: 'none', color: 'rgb(246, 75, 47)' , marginTop: "2px"}}>World Coronavirus Tracker</h3>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <div className="card mb-5 text-center border-0" >
-                                <div className="card-body">
-                                    <p>Total : {this.state.worldconfirmedcases}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card mb-5 text-center border-0" >
-                                <div className="card-body">
-                                    <p>Active {this.state.worldactivecases}</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div className="w-100"></div>
-                        <div className="col">
-                            <div className="card success mb-3 text-center border-0" >
-                                <div className="card-body">
-                                    <p>Cured : {this.state.worldrecoveredcases}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col">
-                            <div className="card mb-5 text-center border-0" >
-                                <div className="card-body">
-                                    <p>Death : {this.state.worlddeathcases}</p>
-                                </div>
-                            </div>
-                        </div>
-                  </div>
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  render() {
+    return (
+      <div className="container">
+        <div className="container text-center">
+          <h3
+            style={{
+              textDecoration: "none",
+              color: "rgb(16, 112, 224)",
+              marginTop: "2px",
+              color: "red",
+            }}
+          >
+            World Coronavirus Tracker
+          </h3>
+        </div>
+        <div className="covid19-card dark_theme" style={heading}>
+          <h4 id="country" className="covid19-title-big" style={title}>
+            World
+          </h4>
+          <div className="covid19-row">
+            <div className="covid19-col covid19-confirmed" style={covidcol}>
+              <div>
+                <span
+                  id="tot-cases"
+                  className="covid19-num confirmed"
+                  style={confirmed}
+                >
+                  {this.state.worldconfirmedcases}
+                </span>
               </div>
-        );
-    }
+
+              <div className="covid19-title" style={covidtitle}>
+                Confirmed
+              </div>
+            </div>
+            <div className="covid19-col covid19-deaths" style={covidcol}>
+              <div>
+                <span
+                  id="tot-deaths"
+                  className="covid19-num deaths-dark"
+                  style={deathsdark}
+                >
+                  {this.state.worlddeathcases}
+                </span>
+              </div>
+              <div className="covid19-title" style={covidtitle}>
+                Deaths
+              </div>
+            </div>
+            <div
+              className="covid19-col covid19-recovered"
+              style={(covidcol, covidRecovered)}
+            >
+              <div
+                id="tot-recover"
+                className="covid19-num recovered"
+                style={recovered}
+              >
+                {this.state.worldrecoveredcases}
+              </div>
+              <div className="covid19-title" style={covidtitle}>
+                Recovered
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default StatsWorld;
