@@ -158,7 +158,7 @@ class StatsInd extends Component {
                   {this.state.deathcases}
                 </span>
                 <span id="new-deaths" className="subsidiary">
-                  {"( +" + this.state.neadeath + " )"}
+                  {"( +" + this.state.newdeath + " )"}
                 </span>
               </div>
               <div className="covid19-title" style={covidtitle}>
