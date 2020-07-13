@@ -39,6 +39,8 @@ const title = {
   lineHeight: "1.5",
   fontFamily: "inherit",
   letterSpacing: "0.1rem",
+  float: "left",
+  paddingLeft: 10,
 };
 const covidcol = {
   display: "inline-block",
@@ -111,9 +113,20 @@ class StatsWorld extends Component {
           </h3>
         </div>
         <div className="covid19-card dark_theme" style={heading}>
-          <h4 id="country" className="covid19-title-big" style={title}>
-            World
-          </h4>
+         <div
+            class="child float-left-child"
+            style={{ display: "inline-block" }}
+          >
+            <img
+              src={"/static/world.png"}
+              width="30"
+              height="30"
+              style={{ float: "left" }}
+            />
+            <h4 id="country" className="covid19-title-big" style={title}>
+              World
+            </h4>
+          </div>
           <div className="covid19-row">
             <div className="covid19-col covid19-confirmed" style={covidcol}>
               <div>
