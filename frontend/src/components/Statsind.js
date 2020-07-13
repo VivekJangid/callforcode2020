@@ -126,7 +126,7 @@ class StatsInd extends Component {
         </div>
         <div className="covid19-card dark_theme" style={heading}>
          <div
-            class="child float-left-child"
+            className="child float-left-child"
             style={{ display: "inline-block" }}
           >
             <img

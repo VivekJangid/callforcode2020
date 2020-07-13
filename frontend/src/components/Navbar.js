@@ -35,25 +35,11 @@ class Navbar extends Component {
                 </a>
               </li>
             </ul>
-            <form
-              class="form-inline my-2 my-lg-0 ml-center"
-              style={{ marginLeft: 300 }}
-            >
-              <input
-                class="form-control mr-lg-2"
-                type="text"
-                placeholder="Locality Preferences"
-                style={{ width: 600 }}
-              />
-              <button class="btn btn-success my-2 my-sm-0" type="submit">
-                Search
-              </button>
-            </form>
           </div>
-          <ul class="nav nav-pills ml-auto">
-            <li class="nav-item dropdown">
+          <ul className="nav nav-pills ml-auto">
+            <li className="nav-item dropdown">
               <a
-                class="nav-link dropdown-toggle"
+                className="nav-link dropdown-toggle"
                 data-toggle="dropdown"
                 href="#"
                 role="button"
@@ -62,18 +48,18 @@ class Navbar extends Component {
               >
                 Account
               </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">
+              <div className="dropdown-menu">
+                <a className="dropdown-item" href="#">
                   Login
                 </a>
-                <a class="dropdown-item" href="#">
+                <a className="dropdown-item" href="#">
                   Signup
                 </a>
               </div>
             </li>
 
-            <li class="nav-item">
-              <button type="button" class="btn btn-success">
+            <li className="nav-item">
+              <button type="button" className="btn btn-success">
                 Post a Job
               </button>
             </li>

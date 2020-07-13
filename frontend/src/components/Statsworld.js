@@ -63,6 +63,7 @@ const covidtitle = {
 const covidnum = {
   fontWeight: 700,
   fontSize: "1.3em",
+
 };
 class StatsWorld extends Component {
   state = {
@@ -114,7 +115,7 @@ class StatsWorld extends Component {
         </div>
         <div className="covid19-card dark_theme" style={heading}>
          <div
-            class="child float-left-child"
+            className="child float-left-child"
             style={{ display: "inline-block" }}
           >
             <img

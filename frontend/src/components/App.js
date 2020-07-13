@@ -10,18 +10,22 @@ class App extends Component {
     return (
       <div> 
         <Navbar/>
-        <div className="container">
-          <div className="row">
-            <div className="col">
-              <div className="container">
-                <StatsInd/>
-              </div>
+        <div classname="container" >
+          <div id="accordion">
+            <div id="IndStats" className="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+              <StatsInd/>
             </div>
-            <div className="col">
-              <div className="container">
-                <StatsWorld/>
-              </div>
+            <div id="WorldStats" className="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+              <StatsWorld/>
             </div>
+          </div>
+          <div className="btn-group" role="group">
+            <button type="button" className="btn btn-danger btn-lg btn-primary " data-toggle="collapse" data-target="#IndStats" aria-expanded="true">
+              India Stats
+            </button>
+            <button type="button" className="btn btn-warning btn-lg btn-primary" data-toggle="collapse" data-target="#WorldStats" aria-expanded="false">
+              World Stats
+            </button>
           </div>
         </div>
       </div>
