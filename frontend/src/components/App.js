@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <div classname="container">
+        <div className="container">
           <div id="accordion">
             <div
               id="IndStats"
