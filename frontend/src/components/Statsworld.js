@@ -26,11 +26,20 @@ const deaths = {
   color: "black",
   fontWeight: 700,
   fontSize: "1.3em",
+  margin: "0px 10px 0px 0px",
 };
+
 const recovered = {
   color: "green",
   fontWeight: 700,
   fontSize: "1.3em",
+  margin: "0px 10px 0px 0px",
+};
+const active = {
+  color: "orange",
+  fontWeight: 700,
+  fontSize: "1.3em",
+  margin: "0px 10px 0px 0px",
 };
 const title = {
   margin: "0px 0px 19.2px",
@@ -63,7 +72,6 @@ const covidtitle = {
 const covidnum = {
   fontWeight: 700,
   fontSize: "1.3em",
-
 };
 class StatsWorld extends Component {
   state = {
@@ -114,7 +122,7 @@ class StatsWorld extends Component {
           </h3>
         </div>
         <div className="covid19-card dark_theme" style={heading}>
-         <div
+          <div
             className="child float-left-child"
             style={{ display: "inline-block" }}
           >
@@ -129,6 +137,7 @@ class StatsWorld extends Component {
             </h4>
           </div>
           <div className="covid19-row">
+            {/* confirmed */}
             <div className="covid19-col covid19-confirmed" style={covidcol}>
               <div>
                 <span
@@ -144,6 +153,7 @@ class StatsWorld extends Component {
                 Confirmed
               </div>
             </div>
+            {/* deaths */}
             <div className="covid19-col covid19-deaths" style={covidcol}>
               <div>
                 <span
@@ -158,19 +168,36 @@ class StatsWorld extends Component {
                 Deaths
               </div>
             </div>
-            <div
-              className="covid19-col covid19-recovered"
-              style={(covidcol, covidRecovered)}
-            >
-              <div
-                id="tot-recover"
-                className="covid19-num recovered"
-                style={recovered}
-              >
-                {this.state.worldrecoveredcases}
+            {/* recovered */}
+            <div className="covid19-col covid19-confirmed" style={covidcol}>
+              <div>
+                <span
+                  id="tot-cases"
+                  className="covid19-num confirmed"
+                  style={recovered}
+                >
+                  {this.state.worldrecoveredcases}
+                </span>
               </div>
+
               <div className="covid19-title" style={covidtitle}>
-                Recovered
+                Confirmed
+              </div>
+            </div>
+            {/* Active */}
+            <div className="covid19-col covid19-confirmed" style={covidcol}>
+              <div>
+                <span
+                  id="tot-cases"
+                  className="covid19-num confirmed"
+                  style={active}
+                >
+                  {this.state.worldactivecases}
+                </span>
+              </div>
+
+              <div className="covid19-title" style={covidtitle}>
+                Active
               </div>
             </div>
           </div>

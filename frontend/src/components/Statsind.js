@@ -27,11 +27,19 @@ const deaths = {
   color: "black",
   fontWeight: 700,
   fontSize: "1.3em",
+  margin: "0px 10px 0px 0px",
 };
 const recovered = {
   color: "green",
   fontWeight: 700,
   fontSize: "1.3em",
+  margin: "0px 10px 0px 0px",
+};
+const active = {
+  color: "orange",
+  fontWeight: 700,
+  fontSize: "1.3em",
+  margin: "0px 10px 0px 0px",
 };
 const title = {
   margin: "0px 0px 19.2px",
@@ -125,7 +133,7 @@ class StatsInd extends Component {
           </h3>
         </div>
         <div className="covid19-card dark_theme" style={heading}>
-         <div
+          <div
             className="child float-left-child"
             style={{ display: "inline-block" }}
           >
@@ -140,6 +148,7 @@ class StatsInd extends Component {
             </h4>
           </div>
           <div className="covid19-row">
+            {/* confirmed */}
             <div className="covid19-col covid19-confirmed" style={covidcol}>
               <div>
                 <span
@@ -150,7 +159,7 @@ class StatsInd extends Component {
                   {this.state.confirmedcases}
                 </span>
                 <span id="new-cases" className="subsidiary">
-                  {"( +" + this.state.newconfirmed + " )"}
+                  {"( + " + this.state.newconfirmed + " )"}
                 </span>
               </div>
 
@@ -158,6 +167,7 @@ class StatsInd extends Component {
                 Confirmed
               </div>
             </div>
+            {/* death */}
             <div className="covid19-col covid19-deaths" style={covidcol}>
               <div>
                 <span
@@ -168,26 +178,48 @@ class StatsInd extends Component {
                   {this.state.deathcases}
                 </span>
                 <span id="new-deaths" className="subsidiary">
-                  {"( +" + this.state.newdeath + " )"}
+                  {"( + " + this.state.newdeath + " )"}
                 </span>
               </div>
               <div className="covid19-title" style={covidtitle}>
                 Deaths
               </div>
             </div>
-            <div
-              className="covid19-col covid19-recovered"
-              style={(covidcol, covidRecovered)}
-            >
-              <div
-                id="tot-recover"
-                className="covid19-num recovered"
-                style={recovered}
-              >
-                {this.state.recoveredcases}
+            {/* Recoverd */}
+            <div className="covid19-col covid19-recovered" style={covidcol}>
+              <div>
+                <span
+                  id="tot-recover"
+                  className="covid19-num recovered"
+                  style={recovered}
+                >
+                  {this.state.recoveredcases}
+                </span>
+                <span id="new-cases" className="subsidiary">
+                  {"( + " + this.state.newrecovered + " )"}
+                </span>
               </div>
+
               <div className="covid19-title" style={covidtitle}>
                 Recovered
+              </div>
+            </div>
+            {/* Active */}
+            <div className="covid19-col covid19-deaths" style={covidcol}>
+              <div>
+                <span
+                  id="tot-deaths"
+                  className="covid19-num deaths-dark"
+                  style={active}
+                >
+                  {this.state.activecases}
+                </span>
+                <span id="new-deaths" className="subsidiary">
+                  {"( + " + this.state.newactive + " )"}
+                </span>
+              </div>
+              <div className="covid19-title" style={covidtitle}>
+                Active
               </div>
             </div>
           </div>
