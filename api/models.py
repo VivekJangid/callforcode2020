@@ -5,7 +5,7 @@ class Skill(models.Model):
     skill = models.CharField(max_length=50,  default='', unique=True)
     
 class Agent(models.Model):
-    agent_name = job_title = models.CharField(max_length=200)
+    agent_name = models.CharField(max_length=50)
     agent_contact = models.IntegerField(blank=False)
     agent_lat = models.DecimalField(max_digits=22, decimal_places=16,blank=False)
     agent_long = models.DecimalField(max_digits=22, decimal_places=16,blank=False)
@@ -13,30 +13,24 @@ class Agent(models.Model):
     agent_age = models.IntegerField()
     agent_sex = models.CharField(max_length=8)
     
-    class Meta:
-        abstract = True
     
 class Worker(models.Model):
-    worker_name = job_title = models.CharField(max_length=200)
+    worker_name = models.CharField(max_length=50)
     registered_under = models.ForeignKey(Agent,on_delete=models.CASCADE)
     worker_skills = models.ManyToManyField(Skill)
     worker_aadhar = models.IntegerField(blank=False)
     worker_age = models.IntegerField()
     worker_sex = models.CharField(max_length=8)
     
-    class Meta:
-        abstract = True
     
 class Company(models.Model):
-    comp_name = job_title = models.CharField(max_length=200)
+    comp_name = models.CharField(max_length=200)
     comp_desc = models.TextField()
     comp_lat = models.DecimalField(max_digits=22, decimal_places=16,blank=False)
     comp_long = models.DecimalField(max_digits=22, decimal_places=16,blank=False)
-    comp_email = job_title = models.EmailField(max_length=100,unique=True)
+    comp_email = models.EmailField(max_length=100,unique=True)
     comp_contact = models.IntegerField(blank=False)
     
-    class Meta:
-        abstract = True
     
 class Jobs(models.Model):
     required_employees = models.IntegerField()
@@ -48,4 +42,3 @@ class Jobs(models.Model):
     
     class Meta:
         ordering = ('created_on',)
-        abstract = True
