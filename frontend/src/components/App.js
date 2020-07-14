@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import StatsWorld from "./Statsworld";
 
 const centerStats = {
-  margin: "20px 0px 0px 800px",
+  margin: "20px 0px 0px 450px",
 };
 class App extends Component {
   render() {
