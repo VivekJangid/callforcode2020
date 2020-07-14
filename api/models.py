@@ -6,20 +6,26 @@ class Skill(models.Model):
     
 class Agent(models.Model):
     agent_name = job_title = models.CharField(max_length=200)
-    agent_contact = models.IntegerField(max_length=10,blank=False)
+    agent_contact = models.IntegerField(blank=False)
     agent_lat = models.DecimalField(max_digits=22, decimal_places=16,blank=False)
     agent_long = models.DecimalField(max_digits=22, decimal_places=16,blank=False)
-    agent_aadhar = models.IntegerField(max_length=12,blank=False)
-    agent_age = models.IntegerField(max_length=2)
+    agent_aadhar = models.IntegerField(blank=False)
+    agent_age = models.IntegerField()
     agent_sex = models.CharField(max_length=8)
+    
+    class Meta:
+        abstract = True
     
 class Worker(models.Model):
     worker_name = job_title = models.CharField(max_length=200)
     registered_under = models.ForeignKey(Agent,on_delete=models.CASCADE)
-    worker_skill = models.ManyToManyField(Skill)
-    worker_aadhar = models.IntegerField(max_length=12,blank=False)
-    worker_age = models.IntegerField(max_length=2)
+    worker_skills = models.ManyToManyField(Skill)
+    worker_aadhar = models.IntegerField(blank=False)
+    worker_age = models.IntegerField()
     worker_sex = models.CharField(max_length=8)
+    
+    class Meta:
+        abstract = True
     
 class Company(models.Model):
     comp_name = job_title = models.CharField(max_length=200)
@@ -27,10 +33,13 @@ class Company(models.Model):
     comp_lat = models.DecimalField(max_digits=22, decimal_places=16,blank=False)
     comp_long = models.DecimalField(max_digits=22, decimal_places=16,blank=False)
     comp_email = job_title = models.EmailField(max_length=100,unique=True)
-    comp_contact = models.IntegerField(max_length=10,blank=False)
+    comp_contact = models.IntegerField(blank=False)
+    
+    class Meta:
+        abstract = True
     
 class Jobs(models.Model):
-    required_employees = models.IntegerField(max_length=4)
+    required_employees = models.IntegerField()
     skills_required = models.ManyToManyField(Skill)
     job_title = models.CharField(max_length=200)
     job_desc = models.CharField(max_length=500)
@@ -39,3 +48,4 @@ class Jobs(models.Model):
     
     class Meta:
         ordering = ('created_on',)
+        abstract = True
