@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .container1 {
+      border-radius: 5px;
+      background-color: #f2f2f2;
+      padding: 20px;
+      width: 100;
+      /* height: auto; */
+      width: 800px;
+      margin: 40px 0px 20px 520px;
+    }
+    .container2 {
+        margin: 10px 0px 20px 800px;
+    }
+  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://bootswatch.com/4/flatly/bootstrap.min.css">
+  <title>Registration - Panacea</title>
+  <script type="text/javascript">
+    function goToNewPage()
+    {
+        var e = document.getElementById('list');
+        var url = e.options[e.selectedIndex].value;
+        // var url=0
+        // document.write(url)
+         window.open(url,"_self") ;
+       
+    }
+</script>
+</head>
+<body>
+<div id="app">
+    <!-- React will load here -->
+    <div class="container2">
+    <img src="logo.png"  alt="Italian Trulli" style="float: left;">
+    <p class="detail" style="font-size: 40px;margin-left: 50px;color: springgreen;">Pan<span class="name" style="color: blueviolet;">acea</span></p>
+</div>
+    <div class="container1">
+    <form>
+        <fieldset>
+          <legend class="text-success" style="text-align: center;"> Registration</legend>
+          
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Name</label>
+            <input type="text" class="form-control" placeholder="ex: John Doe" id="inputDefault">
+          </div>
+          
+          <div class="form-group">
+            <label class="col-form-label" for="inputDefault">Phone</label>
+            <input type="text" class="form-control" placeholder="ex: xxxxxxxxxx" id="contactDefault">
+          </div>
+        
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Confirm Password">
+          </div>
+         
+            <label>Registration Type</label>
+            <select class="custom-select" id="list">
+              <option selected="selected" value="./AgentProfile.html">Agent</option>
+              <option value="./CompanyProfile.html">Company</option>
+            </select><br><br>
+          <button class="btn btn-success" type="button" style="margin:0px 0px 00px 350px " onclick="goToNewPage()">Next</button><br>
+          <a href="./AgentLogin.html" style="float: right;">Already have an account?</a>        </div>
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+</html>
